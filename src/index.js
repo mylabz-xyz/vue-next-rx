@@ -1,3 +1,6 @@
+import { ref } from "./methods/ref";
+import { watch } from "./methods/watch";
+
 console.log("link success");
 export default {
   install: (app, options) => {
@@ -9,5 +12,7 @@ export default {
     console.warn("--------------------------------------");
 
     console.log(options);
-  }
+  },
 };
+
+export { ref, watch };
