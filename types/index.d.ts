@@ -1,7 +1,16 @@
 import { Observer, Observable } from "rxjs";
 import {
+  Component,
+  ComponentCustomOptions,
+  ComponentOptionsMixin,
+  ComputedOptions,
+  DefineComponent,
+  Directive,
+  EmitsOptions,
+  MethodOptions,
   Ref as _Ref,
-  WatchOptions,
+  RenderFunction,
+  SetupContext,
   WatchStopHandle as _WatchStopHandle,
 } from "vue";
 
@@ -19,20 +28,58 @@ export type WatchStopHandle<T = any> = Observer<T> &
 export function ref(value: unknown): Ref;
 
 export function watch(ref: Ref, fn?: (val: any) => any): WatchStopHandle;
+declare module "*.vue" {
+  const component: DefineComponent<{}, {}, any>;
+  export default component;
+}
 
-declare module "vue/types/vue" {
-  interface Vue {
-    $observables: Observables;
-    $watchAsObservable(
-      expr: string,
-      options?: WatchOptions
-    ): Observable<WatchObservable<any>>;
-    $watchAsObservable<T>(
-      fn: (this: this) => T,
-      options?: WatchOptions
-    ): Observable<WatchObservable<T>>;
-    $eventToObservable(event: string): Observable<{ name: string; msg: any }>;
-    $fromDOMEvent(selector: string | null, event: string): Observable<Event>;
-    $createObservableMethod(methodName: string): Observable<any>;
+import type { Vue } from "vue/types/vue";
+declare module "vue" {
+  interface _Vue extends Vue {}
+  interface ComponentOptions {
+    prout: string;
+    subscriptions?: Observables | ((this: Vue) => Observables);
+    domStreams?: string[];
+    observableMethods?: string[] | Record<string, string>;
+  }
+
+  interface ComponentOptionsBase<
+    Props,
+    RawBindings,
+    D,
+    C extends ComputedOptions,
+    M extends MethodOptions,
+    Mixin extends ComponentOptionsMixin,
+    Extends extends ComponentOptionsMixin,
+    E extends EmitsOptions,
+    EE extends string = string,
+    Defaults = {}
+  > extends LegacyOptions<Props, D, C, M, Mixin, Extends>,
+      ComponentInternalOptions,
+      ComponentCustomOptions {
+    setup?: (
+      this: string,
+      props: Props,
+      ctx: SetupContext<E>
+    ) => Promise<RawBindings> | RawBindings | RenderFunction | void;
+    name?: string;
+    prout: string;
+    template?: string | object;
+    render?: Function;
+    components?: Record<string, Component>;
+    directives?: Record<string, Directive>;
+    inheritAttrs?: boolean;
+    emits?: (E | EE[]) & ThisType<void>;
+    expose?: string[];
+    serverPrefetch?(): Promise<any>;
+    /* Excluded from this release type: ssrRender */
+    /* Excluded from this release type: __ssrInlineRender */
+    /* Excluded from this release type: __asyncLoader */
+    /* Excluded from this release type: __merged */
+    call?: (this: unknown, ...args: unknown[]) => never;
+    __isFragment?: never;
+    __isTeleport?: never;
+    __isSuspense?: never;
+    __defaults?: Defaults;
   }
 }

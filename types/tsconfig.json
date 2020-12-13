@@ -1,10 +1,10 @@
 {
   "compilerOptions": {
-    "module": "commonjs",
-    "target": "es5",
-    "lib": ["es6", "dom", "es2015.promise"],
+    "module": "CommonJS",
+    "target": "es6",
     "strict": true,
     "noEmit": true
   },
-  "include": ["*.d.ts"]
+  "include": ["*.d.ts"],
+  "exclude": ["node_modules/**"]
 }
