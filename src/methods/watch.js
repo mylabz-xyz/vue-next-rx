@@ -1,7 +1,7 @@
 import { watch as _watch, onBeforeUnmount } from "vue";
 import { Subject } from "rxjs";
 
-export function watch(ref, fn = null) {
+export default function watch(ref, fn = null) {
   const subject = new Subject();
   const $watch = _watch(ref, (val) => {
     subject.next(val);

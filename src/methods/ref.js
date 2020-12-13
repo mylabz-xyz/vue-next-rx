@@ -1,7 +1,7 @@
 import { ref as _ref, watch as _watch, onBeforeUnmount } from "vue";
 import { Subject } from "rxjs";
 
-export function ref(value) {
+export default function ref(value) {
   const $ref = _ref(value);
   const subject = new Subject();
   $ref.next = subject.next.bind(subject);
