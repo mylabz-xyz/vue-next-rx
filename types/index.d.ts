@@ -54,11 +54,9 @@ declare module "vue" {
     E extends EmitsOptions,
     EE extends string = string,
     Defaults = {}
-  > extends LegacyOptions<Props, D, C, M, Mixin, Extends>,
-      ComponentInternalOptions,
-      ComponentCustomOptions {
+  > extends ComponentCustomOptions {
     setup?: (
-      this: string,
+      this: void,
       props: Props,
       ctx: SetupContext<E>
     ) => Promise<RawBindings> | RawBindings | RenderFunction | void;
@@ -72,10 +70,6 @@ declare module "vue" {
     emits?: (E | EE[]) & ThisType<void>;
     expose?: string[];
     serverPrefetch?(): Promise<any>;
-    /* Excluded from this release type: ssrRender */
-    /* Excluded from this release type: __ssrInlineRender */
-    /* Excluded from this release type: __asyncLoader */
-    /* Excluded from this release type: __merged */
     call?: (this: unknown, ...args: unknown[]) => never;
     __isFragment?: never;
     __isTeleport?: never;

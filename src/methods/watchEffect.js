@@ -1,7 +1,7 @@
 import { watchEffect as _watchEffect, onBeforeUnmount } from "vue";
 import { BehaviorSubject } from "rxjs";
 
-export default function watchEffect(ref, fn = null) {
+export function watchEffect(ref, fn = null) {
   const subject = new BehaviorSubject();
   const $watchEffect = _watchEffect(ref, (val) => {
     subject.next(val);

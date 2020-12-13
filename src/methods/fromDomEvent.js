@@ -1,6 +1,6 @@
 import { Observable, Subscription, NEVER } from "rxjs";
 
-export default function fromDOMEvent(selector, event) {
+export function fromDomEvent(selector, event) {
   if (typeof window === "undefined") {
     // TODO(benlesh): I'm not sure if this is really what you want here,
     // but it's equivalent to what you were doing. You might want EMPTY

@@ -1,25 +1,14 @@
-const rxjs = typeof require !== 'undefined'
-  ? require('rxjs')
-  : typeof window !== 'undefined'
+const rxjs =
+  typeof require !== "undefined"
+    ? require("rxjs")
+    : typeof window !== "undefined"
     ? window.rxjs
-    : null
+    : null;
 
 if (!rxjs) {
-  throw new Error(`[vue-rx]: RxJS is not found.`)
+  throw new Error(`[vue-rx]: RxJS is not found.`);
 }
 
-const {
-  Observable,
-  Subject,
-  Subscription,
-  fromEvent,
-  NEVER
-} = rxjs
+const { Observable, Subject, Subscription, fromEvent, NEVER } = rxjs;
 
-export {
-  Observable,
-  Subject,
-  Subscription,
-  fromEvent,
-  NEVER
-}
+export { Observable, Subject, Subscription, fromEvent, NEVER };
