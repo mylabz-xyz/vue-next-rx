@@ -9,23 +9,7 @@ module.exports = [
       exports: "named",
       format: "es",
       globals: {
-        vue: "vue",
-        rxjs: "rxjs",
-        "rxjs/operators": "rxjs/operators",
-      },
-    },
-    plugins: [buble()],
-    external: ["rxjs", "rxjs/operators"],
-  },
-  {
-    input: "src/index.js",
-    output: {
-      file: "dist/vue-next-rx.js",
-      format: "umd",
-      exports: "named",
-      name: "VueNextRx",
-      globals: {
-        vue: "vue",
+        vue: "Vue",
         rxjs: "rxjs",
         "rxjs/operators": "rxjs/operators",
       },
@@ -37,5 +21,28 @@ module.exports = [
         rxjs: "src/umd-aliases/rxjs.js",
       }),
     ],
+    external: ["vue", "rxjs", "rxjs/operators"],
+  },
+  {
+    input: "src/index.js",
+    output: {
+      file: "dist/vue-next-rx.js",
+      format: "umd",
+      exports: "named",
+      name: "VueNextRx",
+      globals: {
+        vue: "Vue",
+        rxjs: "rxjs",
+        "rxjs/operators": "rxjs/  operators",
+      },
+    },
+    plugins: [
+      buble(),
+      alias({
+        "rxjs/operators": "src/umd-aliases/operators.js",
+        rxjs: "src/umd-aliases/rxjs.js",
+      }),
+    ],
+    external: ["vue", "rxjs", "rxjs/operators"],
   },
 ];

@@ -42,7 +42,8 @@
     "vue": "^3.0.0"
   },
   "peerDependencies": {
-    "rxjs": "^6.0.0"
+    "rxjs": "^6.0.0",
+    "vue": "^3.0.0"
   },
   "repository": {
     "type": "git",

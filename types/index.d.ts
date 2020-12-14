@@ -1,4 +1,4 @@
-import { Observer, Observable } from "rxjs";
+import { Observer, Observable, Unsubscribable } from "rxjs";
 import {
   App,
   DefineComponent,
@@ -15,11 +15,15 @@ export type Ref<T = any> = _Ref<T> & Observer<T> & Observable<T>;
 
 export type WatchStopHandle<T = any> = Observer<T> &
   Observable<T> &
+  Unsubscribable &
   (() => void);
 
 export function ref(value: unknown): Ref;
 
 export function watch(ref: Ref, fn?: (val: any) => any): WatchStopHandle;
+
+export function watchEffect(fn?: () => any): WatchStopHandle;
+
 declare module "*.vue" {
   const component: DefineComponent<{}, {}, any>;
   export default component;

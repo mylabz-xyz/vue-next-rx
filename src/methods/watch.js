@@ -10,6 +10,7 @@ export function watch(ref, fn = null) {
   $watch.next = subject.next.bind(subject);
   $watch.pipe = subject.pipe.bind(subject);
   $watch.subscribe = subject.subscribe.bind(subject);
+  $watch.unsubscribe = subject.unsubscribe.bind(subject);
   onBeforeUnmount(() => subject.unsubscribe());
 
   return $watch;
