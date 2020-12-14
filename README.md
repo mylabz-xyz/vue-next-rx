@@ -2,6 +2,8 @@
 
 # 🚧🚧🚧 WORK IN PROGRESS 🚧🚧🚧
 
+![](https://media.giphy.com/media/25JgMcsSndyuBkoaV2/giphy.gif)
+
 [RxJS v6](https://github.com/ReactiveX/rxjs) integration for Vue next
 
 > **NOTE**
