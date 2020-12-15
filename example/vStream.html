@@ -14,7 +14,7 @@
   const { ref, watch } = VueNextRx;
 
   const app = Vue.createApp({
-    domStreams: ["plus$"],
+    domStreams: ["click$"],
     subscriptions() {
       this.click$.pipe(map(() => "Click Event")).subscribe(console.log); // On click will print "Click Event"
     },

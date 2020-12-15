@@ -10,7 +10,6 @@
 </div>
 <script>
   const { pluck, map } = rxjs.operators;
-  const { ref, watch } = VueNextRx;
 
   const app = Vue.createApp({
     data() {
@@ -18,7 +17,6 @@
     },
     subscriptions() {
       // declaratively map to another property with Rx operators
-      console.log(this);
       return {
         aPlusOne: this.$watchAsObservable("a").pipe(
           pluck("newValue"),

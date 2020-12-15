@@ -1,5 +1,6 @@
 import { defineReactive, isObservable, warn } from "./util";
 import { Subject, Subscription } from "rxjs";
+import { computed } from "vue";
 
 export default {
   created() {
@@ -35,7 +36,7 @@ export default {
       vm.$observables = {};
       vm._subscription = new Subscription();
       Object.keys(obs).forEach((key) => {
-        defineReactive(vm, key, undefined);
+        defineReactive(vm, key, "test");
         const ob = (vm.$observables[key] = obs[key]);
         if (!isObservable(ob)) {
           warn(
@@ -50,6 +51,7 @@ export default {
           obs[key].subscribe(
             (value) => {
               vm[key] = value;
+              this.$forceUpdate();
             },
             (error) => {
               throw error;

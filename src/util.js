@@ -1,4 +1,4 @@
-import { provide, reactive, ref } from "vue";
+import { reactive } from "vue";
 
 export let Vue;
 export let warn = function () {};
@@ -16,13 +16,10 @@ export function isObserver(subject) {
 }
 
 export function defineReactive(vm, key, val) {
-  console.log(vm);
   if (key in vm) {
     vm[key] = val;
   } else {
-    let handler = {};
-    handler[key] = reactive({ [key]: val });
-    provide(key, handler[key]);
+    reactive({ [key]: val });
   }
 }
 

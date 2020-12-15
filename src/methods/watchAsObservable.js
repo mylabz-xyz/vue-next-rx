@@ -1,14 +1,16 @@
 import { Observable, Subscription } from "rxjs";
 
 export function watchAsObservable(expOrFn, options) {
-  console.log("hi");
   const vm = this;
   const obs$ = new Observable((observer) => {
     let _unwatch;
     const watch = () => {
+      console.log("hello");
       _unwatch = vm.$watch(
         expOrFn,
         (newValue, oldValue) => {
+          console.log(oldValue);
+          console.log(newValue);
           observer.next({ oldValue: oldValue, newValue: newValue });
         },
         options
@@ -18,11 +20,12 @@ export function watchAsObservable(expOrFn, options) {
     // if $watchAsObservable is called inside the subscriptions function,
     // because data hasn't been observed yet, the watcher will not work.
     // in that case, wait until created hook to watch.
-    console.log(vm);
-    if (vm._data) {
+    if (vm.$data) {
       watch();
     } else {
-      vm.$once("hook:created", watch);
+      vm.$watch(vm.$data, () => {
+        watch();
+      });
     }
 
     // Returns function which disconnects the $watch expression

@@ -29,7 +29,6 @@ export function install(Vue) {
   Vue.config.globalProperties.$eventToObservable = eventToObservable;
   Vue.config.globalProperties.$createObservableMethod = createObservableMethod;
   Vue.config.optionMergeStrategies.subscriptions = (toVal, fromVal) => {
-    console.warn(fromVal, toVal);
     return fromVal || toVal;
   };
   this._Vue = Vue;

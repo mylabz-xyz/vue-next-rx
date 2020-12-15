@@ -16,7 +16,7 @@
 
 > **NOTE**
 >
-> - vue-next-rx only works with RxJS v6+ by default. If you want to keep using RxJS v5 style code, install `rxjs-comat`.
+> - vue-next-rx only works with RxJS v6+ by default. If you want to keep using RxJS v5 style code, install `rxjs-compat`.
 
 ---
 
