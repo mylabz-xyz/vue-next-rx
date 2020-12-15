@@ -1,6 +1,6 @@
 {
   "name": "@nopr3d/rx-vue-next",
-  "version": "1.0.7",
+  "version": "1.0.10",
   "description": "RxJs for Vue 3",
   "author": "Boucham Amine",
   "license": "MIT",
@@ -20,9 +20,7 @@
     "build": "rollup -c rollup.config.js",
     "publish": "npm publish --access public",
     "lint": "eslint src test example",
-    "test": "npm run test:unit && npm run test:types",
-    "test:unit": "jest",
-    "test:types": "tsc -p types/test",
+    "test": "jest",
     "dev:test": "jest --watch",
     "coverage": "npx nyc --reporter cobertura mocha"
   },
@@ -32,6 +30,7 @@
     "@typescript-eslint/eslint-plugin": "^4.9.1",
     "@typescript-eslint/parser": "^4.9.1",
     "@vue/eslint-config-typescript": "^7.0.0",
+    "@vue/test-utils": "^2.0.0-beta.12",
     "buble": "^0.20.0",
     "eslint": "^7.2.0",
     "eslint-plugin-vue": "^7.2.0",

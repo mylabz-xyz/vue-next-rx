@@ -6,10 +6,10 @@
 
 ### [RxJS v6](https://github.com/ReactiveX/rxjs) integration for [Vue next]()
 
-![](https://img.shields.io/github/license/NOPR9D/rx-vue-next)
-![](https://img.shields.io/gitlab/pipeline/nopr3d/vue-next-rx)
-
 </br>
+
+![](https://img.shields.io/github/license/NOPR9D/rx-vue-next)
+![](https://gitlab.com/nopr3d/vue-next-rx/badges/main/pipeline.svg)
 
 <br>
 
@@ -19,7 +19,7 @@
 
 ---
 
-### Installation
+# Installation
 
 #### NPM + ES2015 or more
 
@@ -54,11 +54,11 @@ Example:
 
 ---
 
-## Usage
+# Usage
 
 <br />
 
-### Subscriptions
+# Subscriptions
 
 ```js
 // Expose `Subject` with domStream, use them in subscriptions functions
@@ -85,7 +85,7 @@ export default defineComponent({
 <!-- On click will show 0, 1 ,2 ,3... -->
 ```
 
-#### Or
+### Or
 
 </br>
 
@@ -101,7 +101,7 @@ export default defineComponent({
 });
 ```
 
-### Tips
+## Tips
 
 You can get the data by simply plucking it from the source stream:
 
@@ -121,7 +121,7 @@ or
 
 ---
 
-### Ref
+# Ref
 
 ```js
 import { ref } from "@nopr3d/rx-vue-next";
@@ -156,7 +156,7 @@ export default defineComponent({
 
 <br />
 
-### Watch
+# Watch
 
 ```js
 import { ref, watch } from "@nopr3d/rx-vue-next";
@@ -190,11 +190,11 @@ export default defineComponent({
 
 <br />
 
-## Other API Methods
+# Other API Methods
 
 </br>
 
-### `$watchAsObservable(expOrFn, [options])`
+## `$watchAsObservable(expOrFn, [options])`
 
 This is a prototype method added to instances. You can use it to create an observable from a Data. The emitted value is in the format of `{ newValue, oldValue }`:
 
@@ -227,7 +227,7 @@ export default defineComponent({
 
 ---
 
-#### `$subscribeTo(observable, next, error, complete)`
+## `$subscribeTo(observable, next, error, complete)`
 
 This is a prototype method added to instances. You can use it to subscribe to an observable, but let VueRx manage the dispose/unsubscribe.
 
@@ -243,7 +243,7 @@ const vm = new Vue({
 });
 ```
 
-#### `$fromDOMEvent(selector, event)`
+## `$fromDOMEvent(selector, event)`
 
 This is a prototype method added to instances. Use it to create an observable from DOM events within the instances' element. This is similar to `Rx.Observable.fromEvent`, but usable inside the `subscriptions` function even before the DOM is actually rendered.
 
@@ -268,10 +268,18 @@ const vm = new Vue({
 <div>{{inputValue}}</div>
 ```
 
-### Example
+---
+
+## Example
 
 See `/examples` for some simple examples.
 
-### License
+</br>
+
+---
+
+## License
 
 [MIT](http://opensource.org/licenses/MIT)
+
+---
