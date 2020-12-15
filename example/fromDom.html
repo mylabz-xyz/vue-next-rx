@@ -1,0 +1,25 @@
+<!-- this demo requires a browser that natively supports ES2015 -->
+
+<script src="https://unpkg.com/rxjs/bundles/rxjs.umd.js"></script>
+<script src="https://unpkg.com/vue@next"></script>
+<script src="../dist/vue-next-rx.js"></script>
+<div id="app">
+  <div class="home">
+    <div><input /></div>
+    <div>{{inputValue}}</div>
+  </div>
+</div>
+<script>
+  const { pluck } = rxjs.operators;
+
+  const app = Vue.createApp({
+    subscriptions() {
+      return {
+        inputValue: this.$fromDOMEvent("input", "keyup").pipe(
+          pluck("target", "value")
+        ),
+      };
+    },
+  }).use(VueNextRx);
+  app.mount("#app");
+</script>

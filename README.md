@@ -8,10 +8,6 @@
 
 </br>
 
-# 🚧🚧🚧 WORK IN PROGRESS 🚧🚧🚧
-
-![](https://media.giphy.com/media/25JgMcsSndyuBkoaV2/giphy.gif)
-
 <br>
 
 > **NOTE**
@@ -200,7 +196,7 @@ export default defineComponent({
 This is a prototype method added to instances. You can use it to create an observable from a Data. The emitted value is in the format of `{ newValue, oldValue }`:
 
 ```js
-import { ref, watch } from "@nopr3d/rx-vue-next";
+import { ref } from "@nopr3d/rx-vue-next";
 
 export default defineComponent({
   name: "Home",
@@ -243,3 +239,36 @@ const vm = new Vue({
   },
 });
 ```
+
+#### `$fromDOMEvent(selector, event)`
+
+This is a prototype method added to instances. Use it to create an observable from DOM events within the instances' element. This is similar to `Rx.Observable.fromEvent`, but usable inside the `subscriptions` function even before the DOM is actually rendered.
+
+`selector` is for finding descendant nodes under the component root element, if you want to listen to events from root element itself, pass `null` as first argument.
+
+```js
+import { pluck } from "rxjs/operators";
+
+const vm = new Vue({
+  subscriptions() {
+    return {
+      inputValue: this.$fromDOMEvent("input", "keyup").pipe(
+        pluck("target", "value")
+      ),
+    };
+  },
+});
+```
+
+```html
+<div><input /></div>
+<div>{{inputValue}}</div>
+```
+
+### Example
+
+See `/examples` for some simple examples.
+
+### License
+
+[MIT](http://opensource.org/licenses/MIT)

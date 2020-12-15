@@ -52,7 +52,6 @@ declare module "vue" {
       options?: WatchOptions
     ): Observable<WatchObservable<T>>;
     $fromDOMEvent(selector: string | null, event: string): Observable<Event>;
-    $createObservableMethod(methodName: string): Observable<any>;
   }
 }
 export function install(app: App): void;

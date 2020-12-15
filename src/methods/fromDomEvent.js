@@ -20,6 +20,7 @@ export function fromDomEvent(selector, event) {
       }
     }
     doc.addEventListener(event, listener);
+    console.log(event);
     // Returns function which disconnects the $watch expression
     return new Subscription(() => {
       doc.removeEventListener(event, listener);
