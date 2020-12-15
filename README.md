@@ -6,6 +6,9 @@
 
 ### [RxJS v6](https://github.com/ReactiveX/rxjs) integration for [Vue next]()
 
+![](https://img.shields.io/github/license/NOPR9D/rx-vue-next)
+![](https://img.shields.io/gitlab/pipeline/nopr3d/vue-next-rx)
+
 </br>
 
 <br>
