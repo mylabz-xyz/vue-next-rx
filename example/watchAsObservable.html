@@ -5,18 +5,26 @@
 <script src="../dist/vue-next-rx.js"></script>
 <div id="app">
   <div class="home">
-    <button v-stream:click="click$">Click Me</button>
+    <div>{{ aPlusOne }}</div>
   </div>
 </div>
 <script>
-  const { Subject, Observable, BehaviorSubject } = rxjs;
-  const { map, startWith, scan } = rxjs.operators;
+  const { pluck, map } = rxjs.operators;
   const { ref, watch } = VueNextRx;
 
   const app = Vue.createApp({
-    domStreams: ["plus$"],
+    data() {
+      return { a: 1 };
+    },
     subscriptions() {
-      this.click$.pipe(map(() => "Click Event")).subscribe(console.log); // On click will print "Click Event"
+      // declaratively map to another property with Rx operators
+      console.log(this);
+      return {
+        aPlusOne: this.$watchAsObservable("a").pipe(
+          pluck("newValue"),
+          map((a) => a + 1)
+        ),
+      };
     },
   }).use(VueNextRx);
   app.mount("#app");

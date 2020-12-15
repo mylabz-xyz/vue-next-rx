@@ -59,26 +59,36 @@ Example:
 
 <br />
 
-### Subscription
+### Subscriptions
+
+```html
+// Bind with stream directives
+<button v-stream:click="action$">Click Me!</button>
+or
+<button v-stream:click="{ subject: action$, data: someData }">+</button>
+```
+
+</br>
 
 ```js
-import { ref } from "@nopr3d/rx-vue-next";
-
-// provide Rx observables with the `subscriptions` option
+// Expose `Subject` with domStream, use them in subscriptions functions
 export default defineComponent({
-    name: "Home",
-    subscriptions() {
-           msg: messageObservable
-    },,
+  name: "Home",
+  domStreams: ["action$"],
+  subscriptions() {
+    this.action$.pipe(map(() => "Click Event !")).subscribe(console.log);
+    // On click will print "Click Event"
+  },
 });
 ```
 
----
+You can get the data by simply plucking it from the source stream:
 
-```html
-<!-- bind to it normally in templates -->
-<div>{{ msg }}</div>
+```js
+const actionData$ = this.action$.pipe(pluck("data"));
 ```
+
+---
 
 ### Ref
 
@@ -147,7 +157,13 @@ export default defineComponent({
 
 <br />
 
-### Watch
+## Other API Methods
+
+</br>
+
+### `$watchAsObservable(expOrFn, [options])`
+
+This is a prototype method added to instances. You can use it to create an observable from a value watcher. The emitted value is in the format of `{ newValue, oldValue }`:
 
 ```js
 import { ref, watch } from "@nopr3d/rx-vue-next";

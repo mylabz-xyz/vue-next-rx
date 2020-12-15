@@ -5,18 +5,33 @@
 <script src="../dist/vue-next-rx.js"></script>
 <div id="app">
   <div class="home">
-    <button v-stream:click="click$">Click Me</button>
+    <div>
+      <button v-stream:click="click$">Click Me</button>
+    </div>
+
+    <div>{{count}}</div>
   </div>
 </div>
 <script>
+  // NOT IN THIS VERSION
+  // NOT IN THIS VERSION
+  // NOT IN THIS VERSION
   const { Subject, Observable, BehaviorSubject } = rxjs;
   const { map, startWith, scan } = rxjs.operators;
   const { ref, watch } = VueNextRx;
 
   const app = Vue.createApp({
-    domStreams: ["plus$"],
+    domStreams: ["click$"],
     subscriptions() {
       this.click$.pipe(map(() => "Click Event")).subscribe(console.log); // On click will print "Click Event"
+
+      return {
+        count: this.click$.pipe(
+          map(() => 1),
+          startWith(0),
+          scan((total, change) => total + change)
+        ),
+      };
     },
   }).use(VueNextRx);
   app.mount("#app");
