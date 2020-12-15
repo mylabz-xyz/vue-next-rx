@@ -5,13 +5,9 @@ export function watchAsObservable(expOrFn, options) {
   const obs$ = new Observable((observer) => {
     let _unwatch;
     const watch = () => {
-      vm.$nextTick();
-      console.log(vm);
       vm.$watch(
         expOrFn,
         (newValue, oldValue) => {
-          console.log("e");
-          console.log(newValue);
           observer.next({ oldValue: oldValue, newValue: newValue });
         },
         options

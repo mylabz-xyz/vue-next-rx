@@ -46,12 +46,9 @@ export default {
           );
           return;
         }
-        console.log(obs);
-
         vm._subscription.add(
           obs[key].subscribe(
             (value) => {
-              console.log(value);
               vm[key] = value;
               this.$forceUpdate();
             },
