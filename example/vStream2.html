@@ -13,9 +13,8 @@
   </div>
 </div>
 <script>
-  // NOT IN THIS VERSION
-  // NOT IN THIS VERSION
-  // NOT IN THIS VERSION
+  // NOT IN THIS VERSION REACTIVE ISSUE
+  // util > defineReactive
   const { Subject, Observable, BehaviorSubject } = rxjs;
   const { map, startWith, scan } = rxjs.operators;
   const { ref, watch } = VueNextRx;
@@ -23,8 +22,6 @@
   const app = Vue.createApp({
     domStreams: ["click$"],
     subscriptions() {
-      this.click$.pipe(map(() => "Click Event")).subscribe(console.log); // On click will print "Click Event"
-
       return {
         count: this.click$.pipe(
           map(() => 1),
