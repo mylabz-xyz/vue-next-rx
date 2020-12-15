@@ -1,0 +1,30 @@
+<!-- this demo requires a browser that natively supports ES2015 -->
+
+<script src="https://unpkg.com/rxjs/bundles/rxjs.umd.js"></script>
+<script src="https://unpkg.com/vue@next"></script>
+<script src="../dist/vue-next-rx.js"></script>
+<div id="app">
+  <div class="home">
+    <div>{{ tick }}</div>
+  </div>
+</div>
+<script>
+  const { map } = rxjs.operators;
+  const { ref, watch } = VueNextRx;
+
+  const app = Vue.createApp({
+    setup() {
+      const tick = ref(0);
+
+      setInterval(() => {
+        tick.value++;
+      }, 2000);
+
+      watch(tick).subscribe((value) => {
+        console.log(value); // Each 2 seconds print updated value
+      });
+      return { tick };
+    },
+  });
+  app.mount("#app");
+</script>

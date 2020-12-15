@@ -1,10 +1,12 @@
 # vue-next-rx
 
-# 🚧🚧🚧 WORK IN PROGRESS 🚧🚧🚧
+<div align="center">
+<img src="assets/pictures/vue-rx.jpg" width="25%" />
+</div>
 
-![](https://media.giphy.com/media/25JgMcsSndyuBkoaV2/giphy.gif)
+### [RxJS v6](https://github.com/ReactiveX/rxjs) integration for [Vue next]()
 
-[RxJS v6](https://github.com/ReactiveX/rxjs) integration for Vue next
+</br>
 
 > **NOTE**
 >
@@ -14,7 +16,7 @@
 
 ### Installation
 
-#### NPM + ES2015
+#### NPM + ES2015 or more
 
 **`rxjs` is required as a peer dependency.**
 
@@ -38,6 +40,8 @@ To use in a browser environment, use the UMD build `dist/vue-next-rx.js`. When i
 Example:
 
 ```html
+<script src="https://unpkg.com/rxjs/bundles/rxjs.umd.js"></script>
+<script src="https://unpkg.com/vue@next"></script>
 <script src="../dist/vue-next-rx.js"></script>
 ```
 

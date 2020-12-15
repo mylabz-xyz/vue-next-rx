@@ -9,7 +9,6 @@ export function ref(value) {
   $ref.subscribe = subject.subscribe.bind(subject);
   _watch($ref, (newValue) => {
     subject.next(newValue);
-    console.log("update");
   });
   onBeforeUnmount(() => subject.unsubscribe());
   return $ref;

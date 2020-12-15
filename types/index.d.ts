@@ -5,6 +5,7 @@ import {
   Ref as _Ref,
   WatchStopHandle as _WatchStopHandle,
 } from "vue";
+import { WatchOptions } from "vue/types/options";
 
 export type Observables = Record<string, Observable<any>>;
 export interface WatchObservable<T> {
@@ -30,19 +31,29 @@ declare module "*.vue" {
 }
 import type { Vue } from "vue/types/vue";
 
-declare module "vue/runtime-core" {
-  interface ComponentCustomProperties {
-    $prout: string;
-    $subscriptions?: Observables | ((this: Vue) => Observables);
-    $domStreams?: string[];
-    $observableMethods?: string[] | Record<string, string>;
-  }
+declare module "vue" {
+  interface ComponentCustomProperties {}
 
   interface ComponentCustomOptions {
-    prout: string;
+    domStreams?: string[];
+    subscriptions?:
+      | Observables
+      | ((this: Vue & { [key: string]: Observables | any }) => Observables);
+    observableMethods?: string[] | Record<string, string>;
   }
   interface ComponentCustomProps {
-    prout: string;
+    $observables: Observables;
+    $watchAsObservable(
+      expr: string,
+      options?: WatchOptions
+    ): Observable<WatchObservable<any>>;
+    $watchAsObservable<T>(
+      fn: (this: this) => T,
+      options?: WatchOptions
+    ): Observable<WatchObservable<T>>;
+    $eventToObservable(event: string): Observable<{ name: string; msg: any }>;
+    $fromDOMEvent(selector: string | null, event: string): Observable<Event>;
+    $createObservableMethod(methodName: string): Observable<any>;
   }
 }
 export function install(app: App): void;

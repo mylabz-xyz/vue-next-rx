@@ -1,23 +1,27 @@
 import { ref } from "./methods/ref";
 import { watch } from "./methods/watch";
-import { watchEffect } from "./methods/watchEffect";
 
 import { createObservableMethod } from "./methods/createObservableMethod";
 import { eventToObservable } from "./methods/eventToObservable";
 import { fromDomEvent } from "./methods/fromDomEvent";
+import { subscribeTo } from "./methods/subscribeTo";
+import { watchAsObservable } from "./methods/watchAsObservable";
 
-console.log("link success");
+import streamDirective from "./directives/stream";
+
+import rxMixin from "./mixin";
 
 //TODO: Work also with vue
 export default {
-  install: () => {},
+  install: (Vue) => {
+    Vue.directive("stream", streamDirective);
+    Vue.mixin(rxMixin);
+    Vue.config.globalProperties.$watchAsObservable = watchAsObservable;
+    Vue.config.globalProperties.$fromDOMEvent = fromDomEvent;
+    Vue.config.globalProperties.$subscribeTo = subscribeTo;
+    Vue.config.globalProperties.$eventToObservable = eventToObservable;
+    Vue.config.globalProperties.$createObservableMethod = createObservableMethod;
+  },
 };
 
-export {
-  ref,
-  watch,
-  watchEffect,
-  fromDomEvent,
-  createObservableMethod,
-  eventToObservable,
-};
+export { ref, watch };
