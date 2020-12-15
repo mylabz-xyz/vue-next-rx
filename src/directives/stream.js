@@ -4,9 +4,6 @@ import { fromEvent } from "rxjs";
 export default {
   // Example ./example/counter_dir.html
   mounted(el, binding, vnode) {
-    console.log(el);
-    console.log(binding);
-    console.log(vnode);
     let handle = binding.value;
     const event = binding.arg;
     const streamName = binding.expression;

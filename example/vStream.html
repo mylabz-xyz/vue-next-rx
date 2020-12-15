@@ -5,26 +5,19 @@
 <script src="../dist/vue-next-rx.js"></script>
 <div id="app">
   <div class="home">
-    <button v-stream:click="plus$">+</button>
+    <button v-stream:click="{subject:plus$,data:'Clicked'}">+</button>{{count}}
   </div>
 </div>
 <script>
-  const { map } = rxjs.operators;
+  const { Subject, Observable } = rxjs;
+  const { map, startWith, scan } = rxjs.operators;
   const { ref, watch } = VueNextRx;
 
   const app = Vue.createApp({
-    setup() {
-      const tick = ref(0);
-
-      setInterval(() => {
-        tick.value++;
-      }, 2000);
-
-      watch(tick).subscribe((value) => {
-        console.log(value); // Each 2 seconds print updated value
-      });
-      return { tick };
+    mounted() {
+      count: new Observable(9898);
     },
-  });
+    subscriptions() {},
+  }).use(VueNextRx);
   app.mount("#app");
 </script>

@@ -8,6 +8,12 @@
 
 </br>
 
+# 🚧🚧🚧 WORK IN PROGRESS 🚧🚧🚧
+
+![](https://media.giphy.com/media/25JgMcsSndyuBkoaV2/giphy.gif)
+
+<br>
+
 > **NOTE**
 >
 > - vue-next-rx only works with RxJS v6+ by default. If you want to keep using RxJS v5 style code, install `rxjs-comat`.
@@ -52,6 +58,27 @@ Example:
 ## Usage
 
 <br />
+
+### Subscription
+
+```js
+import { ref } from "@nopr3d/rx-vue-next";
+
+// provide Rx observables with the `subscriptions` option
+export default defineComponent({
+    name: "Home",
+    subscriptions() {
+           msg: messageObservable
+    },,
+});
+```
+
+---
+
+```html
+<!-- bind to it normally in templates -->
+<div>{{ msg }}</div>
+```
 
 ### Ref
 

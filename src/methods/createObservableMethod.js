@@ -11,7 +11,6 @@ import { warn } from "../util";
  */
 export function createObservableMethod(methodName, passContext) {
   const vm = this;
-
   if (vm[methodName] !== undefined) {
     warn(
       "Potential bug: " +
