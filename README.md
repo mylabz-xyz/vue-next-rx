@@ -1,4 +1,4 @@
-# vue-next-rx
+# rx-vue-next
 
 <div align="center">
 <img src="https://i.ibb.co/q5267TX/maxresdefault-2.jpg" width="25%" />
