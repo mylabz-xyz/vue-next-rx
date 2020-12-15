@@ -5,11 +5,12 @@ export function watchAsObservable(expOrFn, options) {
   const obs$ = new Observable((observer) => {
     let _unwatch;
     const watch = () => {
-      console.log("hello");
-      _unwatch = vm.$watch(
+      vm.$nextTick();
+      console.log(vm);
+      vm.$watch(
         expOrFn,
         (newValue, oldValue) => {
-          console.log(oldValue);
+          console.log("e");
           console.log(newValue);
           observer.next({ oldValue: oldValue, newValue: newValue });
         },
@@ -20,13 +21,9 @@ export function watchAsObservable(expOrFn, options) {
     // if $watchAsObservable is called inside the subscriptions function,
     // because data hasn't been observed yet, the watcher will not work.
     // in that case, wait until created hook to watch.
-    if (vm.$data) {
+    setTimeout(() => {
       watch();
-    } else {
-      vm.$watch(vm.$data, () => {
-        watch();
-      });
-    }
+    }, 0);
 
     // Returns function which disconnects the $watch expression
     return new Subscription(() => {

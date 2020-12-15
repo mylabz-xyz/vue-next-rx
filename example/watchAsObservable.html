@@ -5,23 +5,24 @@
 <script src="../dist/vue-next-rx.js"></script>
 <div id="app">
   <div class="home">
-    <div>{{ aPlusOne }}</div>
+    <div>{{ msg }}</div>
+    <div>{{oldMsg}}</div>
   </div>
 </div>
 <script>
   const { pluck, map } = rxjs.operators;
+  const { ref, watch } = VueNextRx;
 
   const app = Vue.createApp({
-    data() {
-      return { a: 1 };
+    setup() {
+      const msg = ref("Old Message");
+      setTimeout(() => (msg.value = "New message incomming !"), 1000);
+      return { msg };
     },
     subscriptions() {
       // declaratively map to another property with Rx operators
       return {
-        aPlusOne: this.$watchAsObservable("a").pipe(
-          pluck("newValue"),
-          map((a) => a + 1)
-        ),
+        oldMsg: this.$watchAsObservable("msg").pipe(pluck("oldValue")),
       };
     },
   }).use(VueNextRx);

@@ -1,14 +1,10 @@
-import { reactive } from "vue";
-
 export let Vue;
-export let warn = function () {};
+export let warn = function (error) {
+  console.log("vue-next-rx : " + error);
+};
 
 export function install(_Vue) {
   Vue = _Vue;
-}
-
-export function isObservable(ob) {
-  return ob && typeof ob.subscribe === "function";
 }
 
 export function isObserver(subject) {
@@ -16,11 +12,7 @@ export function isObserver(subject) {
 }
 
 export function defineReactive(vm, key, val) {
-  if (key in vm) {
-    vm[key] = val;
-  } else {
-    reactive({ [key]: val });
-  }
+  vm[key] = val;
 }
 
 export function getKey(binding) {

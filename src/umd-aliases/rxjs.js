@@ -9,6 +9,13 @@ if (!rxjs) {
   throw new Error(`[vue-rx]: RxJS is not found.`);
 }
 
-const { Observable, Subject, Subscription, fromEvent, NEVER } = rxjs;
+const {
+  Observable,
+  Subject,
+  Subscription,
+  fromEvent,
+  NEVER,
+  isObservable,
+} = rxjs;
 
-export { Observable, Subject, Subscription, fromEvent, NEVER };
+export { Observable, Subject, Subscription, fromEvent, NEVER, isObservable };

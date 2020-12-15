@@ -61,12 +61,32 @@ Example:
 
 ### Subscriptions
 
-```html
-// Bind with stream directives
-<button v-stream:click="action$">Click Me!</button>
-or
-<button v-stream:click="{ subject: action$, data: someData }">+</button>
+```js
+// Expose `Subject` with domStream, use them in subscriptions functions
+export default defineComponent({
+  name: "Home",
+   domStreams: ["click$"],
+    subscriptions() {
+      return {
+        count: this.click$.pipe(
+          map(() => 1),
+          startWith(0),
+          scan((total, change) => total + change)
+        ),
+      };
+});
 ```
+
+```html
+<div>
+  <button v-stream:click="click$">Click Me</button>
+</div>
+
+<div>{{count}}</div>
+<!-- On click will show 0, 1 ,2 ,3... -->
+```
+
+#### Or
 
 </br>
 
@@ -82,11 +102,23 @@ export default defineComponent({
 });
 ```
 
+### Tips
+
 You can get the data by simply plucking it from the source stream:
 
 ```js
 const actionData$ = this.action$.pipe(pluck("data"));
 ```
+
+You can bind Subject by this way
+
+```html // Bind with stream directives
+<button v-stream:click="action$">Click Me!</button>
+or
+<button v-stream:click="{ subject: action$, data: someData }">+</button>
+```
+
+</br>
 
 ---
 
@@ -102,7 +134,9 @@ export default defineComponent({
   setup() {
     const msg = ref("Message exemple");
 
-    msg.value = "New message !";
+    setTimeout(() => {
+      msg.value = "New message !";
+    }, 2000);
 
     msg.subscribe((value) => {
       console.log(value); // After 2s will print : New message !
@@ -163,26 +197,22 @@ export default defineComponent({
 
 ### `$watchAsObservable(expOrFn, [options])`
 
-This is a prototype method added to instances. You can use it to create an observable from a value watcher. The emitted value is in the format of `{ newValue, oldValue }`:
+This is a prototype method added to instances. You can use it to create an observable from a Data. The emitted value is in the format of `{ newValue, oldValue }`:
 
 ```js
 import { ref, watch } from "@nopr3d/rx-vue-next";
 
 export default defineComponent({
   name: "Home",
-  components: {},
   setup() {
-    const msg = ref("Message exemple");
-
-    watch(msg).subscribe((val) => {
-      console.log(val); // After 2s will print : New message !
-    });
-
-    setTimeout(() => {
-      msg.value = "New message !";
-    }, 2000);
-
+    const msg = ref("Old Message");
+    setTimeout(() => (msg.value = "New message incomming !"), 1000);
     return { msg };
+  },
+  subscriptions() {
+    return {
+      oldMsg: this.$watchAsObservable("msg").pipe(pluck("oldValue")),
+    };
   },
 });
 ```
@@ -191,6 +221,9 @@ export default defineComponent({
 <!-- bind to it normally in templates -->
 <!-- on change DOM is update too -->
 <div>{{ msg }}</div>
+<!-- Will display : Old message, after 1 second display "New Message !" -->
+<div>{{oldMsg}}</div>
+<!-- wait for value and display "Olw Message" after 1 second -->
 ```
 
 ---
