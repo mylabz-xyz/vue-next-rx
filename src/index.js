@@ -2,7 +2,6 @@ import { ref } from "./methods/ref";
 import { watch } from "./methods/watch";
 
 import { createObservableMethod } from "./methods/createObservableMethod";
-import { eventToObservable } from "./methods/eventToObservable";
 import { fromDomEvent } from "./methods/fromDomEvent";
 import { subscribeTo } from "./methods/subscribeTo";
 import { watchAsObservable } from "./methods/watchAsObservable";
@@ -26,7 +25,6 @@ export function install(Vue) {
   Vue.config.globalProperties.$watchAsObservable = watchAsObservable;
   Vue.config.globalProperties.$fromDOMEvent = fromDomEvent;
   Vue.config.globalProperties.$subscribeTo = subscribeTo;
-  Vue.config.globalProperties.$eventToObservable = eventToObservable;
   Vue.config.globalProperties.$createObservableMethod = createObservableMethod;
   Vue.config.optionMergeStrategies.subscriptions = (toVal, fromVal) => {
     return fromVal || toVal;

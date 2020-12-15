@@ -51,7 +51,6 @@ declare module "vue" {
       fn: (this: this) => T,
       options?: WatchOptions
     ): Observable<WatchObservable<T>>;
-    $eventToObservable(event: string): Observable<{ name: string; msg: any }>;
     $fromDOMEvent(selector: string | null, event: string): Observable<Event>;
     $createObservableMethod(methodName: string): Observable<any>;
   }

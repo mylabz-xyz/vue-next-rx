@@ -1,0 +1,20 @@
+<!-- this demo requires a browser that natively supports ES2015 -->
+
+<script src="https://unpkg.com/rxjs/bundles/rxjs.umd.js"></script>
+<script src="https://unpkg.com/vue@next"></script>
+<script src="../dist/vue-next-rx.js"></script>
+<div id="app">
+  <div class="home"></div>
+</div>
+<script>
+  const { interval } = rxjs;
+
+  const app = Vue.createApp({
+    mounted() {
+      this.$subscribeTo(interval(1000), function (count) {
+        console.log(count);
+      });
+    },
+  }).use(VueNextRx);
+  app.mount("#app");
+</script>
