@@ -8,8 +8,8 @@
     "url": "https://github.com/NOPR9D/rx-vue-next/issues"
   },
   "homepage": "https://github.com/NOPR9D/rx-vue-next#readme",
-  "main": "dist/vue-next-rx.js",
-  "module": "dist/vue-next-rx.esm.js",
+  "main": "dist/rx-vue-next.js",
+  "module": "dist/rx-vue-next.esm.js",
   "sideEffects": false,
   "files": [
     "types/*.d.ts"

@@ -37,14 +37,14 @@ Vue.use(VueRx);
 
 When bundling via webpack, `dist/vue-next-rx.esm.js` is used by default. It imports the minimal amount of Rx operators and ensures small bundle sizes.
 
-To use in a browser environment, use the UMD build `dist/vue-next-rx.js`. When in a browser environment, the UMD build assumes `window.rxjs` to be already present, so make sure to include `vue-next-rx.js` after Vue.js and RxJS. It also installs itself automatically if `window.Vue` is present.
+To use in a browser environment, use the UMD build `dist/rx-vue-next.js`. When in a browser environment, the UMD build assumes `window.rxjs` to be already present, so make sure to include `rx-vue-next.js` after Vue.js and RxJS. It also installs itself automatically if `window.Vue` is present.
 
 Example:
 
 ```html
 <script src="https://unpkg.com/rxjs/bundles/rxjs.umd.js"></script>
 <script src="https://unpkg.com/vue@next"></script>
-<script src="../dist/vue-next-rx.js"></script>
+<script src="../dist/rx-vue-next.js"></script>
 ```
 
 <br />

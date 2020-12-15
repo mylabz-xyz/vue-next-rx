@@ -5,7 +5,7 @@ module.exports = [
   {
     input: "src/index.js",
     output: {
-      file: "dist/vue-next-rx.esm.js",
+      file: "dist/rx-vue-next.esm.js",
       exports: "named",
       format: "es",
       globals: {
@@ -26,7 +26,7 @@ module.exports = [
   {
     input: "src/index.js",
     output: {
-      file: "dist/vue-next-rx.js",
+      file: "dist/rx-vue-next.js",
       format: "umd",
       exports: "named",
       name: "VueNextRx",
