@@ -227,3 +227,19 @@ export default defineComponent({
 ```
 
 ---
+
+#### `$subscribeTo(observable, next, error, complete)`
+
+This is a prototype method added to instances. You can use it to subscribe to an observable, but let VueRx manage the dispose/unsubscribe.
+
+```js
+import { interval } from "rxjs";
+
+const vm = new Vue({
+  mounted() {
+    this.$subscribeTo(interval(1000), function (count) {
+      console.log(count);
+    });
+  },
+});
+```
