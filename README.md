@@ -1,7 +1,7 @@
 # vue-next-rx
 
 <div align="center">
-<img src="assets/pictures/vue-rx.jpg" width="25%" />
+<img src="https://i.ibb.co/q5267TX/maxresdefault-2.jpg" width="25%" />
 </div>
 
 ### [RxJS v6](https://github.com/ReactiveX/rxjs) integration for [Vue next]()
@@ -219,7 +219,7 @@ export default defineComponent({
 <div>{{ msg }}</div>
 <!-- Will display : Old message, after 1 second display "New Message !" -->
 <div>{{oldMsg}}</div>
-<!-- wait for value and display "Olw Message" after 1 second -->
+<!-- wait for value and display "Old Message" after 1 second -->
 ```
 
 ---
