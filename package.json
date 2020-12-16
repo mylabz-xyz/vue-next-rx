@@ -20,9 +20,8 @@
     "build": "rollup -c rollup.config.js",
     "publish": "npm publish --access public",
     "lint": "eslint src test example",
-    "test": "jest",
     "dev:test": "jest --watch",
-    "coverage": "npx nyc --reporter cobertura mocha"
+    "test": "jest"
   },
   "devDependencies": {
     "@rollup/plugin-alias": "^3.1.1",

@@ -4,8 +4,6 @@
 
 const { mount, config } = require("@vue/test-utils");
 const VueNextRx = require("../dist/rx-vue-next.js");
-
-// library
 const { Observable } = require("rxjs");
 const { startWith } = require("rxjs/operators");
 
