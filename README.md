@@ -1,4 +1,4 @@
-# vue-rx-next
+# vue-next-rx
 
 <div align="center">
 <img src="https://i.ibb.co/q5267TX/maxresdefault-2.jpg" width="25%" />
@@ -8,7 +8,7 @@
 
 </br>
 
-![](https://img.shields.io/github/license/NOPR9D/vue-rx-next)
+![](https://img.shields.io/github/license/NOPR9D/vue-next-rx)
 ![](https://gitlab.com/nopr3d/vue-next-rx/badges/main/pipeline.svg)
 
 <br>
@@ -26,12 +26,12 @@
 **`rxjs` is required as a peer dependency.**
 
 ```bash
-npm install vue @nopr3d/vue-rx-next rxjs --save
+npm install vue @nopr3d/vue-next-rx rxjs --save
 ```
 
 ```js
 import Vue from "vue";
-import VueRx from "@nopr3d/vue-rx-next";
+import VueRx from "@nopr3d/vue-next-rx";
 
 Vue.use(VueRx);
 ```
@@ -40,14 +40,14 @@ Vue.use(VueRx);
 
 When bundling via webpack, `dist/vue-next-rx.esm.js` is used by default. It imports the minimal amount of Rx operators and ensures small bundle sizes.
 
-To use in a browser environment, use the UMD build `dist/vue-rx-next.js`. When in a browser environment, the UMD build assumes `window.rxjs` to be already present, so make sure to include `vue-rx-next.js` after Vue.js and RxJS. It also installs itself automatically if `window.Vue` is present.
+To use in a browser environment, use the UMD build `dist/vue-next-rx.js`. When in a browser environment, the UMD build assumes `window.rxjs` to be already present, so make sure to include `vue-next-rx.js` after Vue.js and RxJS. It also installs itself automatically if `window.Vue` is present.
 
 Example:
 
 ```html
 <script src="https://unpkg.com/rxjs/bundles/rxjs.umd.js"></script>
 <script src="https://unpkg.com/vue@next"></script>
-<script src="../dist/vue-rx-next.js"></script>
+<script src="../dist/vue-next-rx.js"></script>
 ```
 
 <br />
@@ -124,7 +124,7 @@ or
 # Ref
 
 ```js
-import { ref } from "@nopr3d/vue-rx-next";
+import { ref } from "@nopr3d/vue-next-rx";
 
 // use ref like an Rx Subject
 export default defineComponent({
@@ -159,7 +159,7 @@ export default defineComponent({
 # Watch
 
 ```js
-import { ref, watch } from "@nopr3d/vue-rx-next";
+import { ref, watch } from "@nopr3d/vue-next-rx";
 
 export default defineComponent({
   name: "Home",
@@ -199,7 +199,7 @@ export default defineComponent({
 This is a prototype method added to instances. You can use it to create an observable from a Data. The emitted value is in the format of `{ newValue, oldValue }`:
 
 ```js
-import { ref } from "@nopr3d/vue-rx-next";
+import { ref } from "@nopr3d/vue-next-rx";
 
 export default defineComponent({
   name: "Home",

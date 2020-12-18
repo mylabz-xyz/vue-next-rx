@@ -3,7 +3,7 @@
 "use strict";
 
 const { mount, config } = require("@vue/test-utils");
-const VueNextRx = require("../dist/vue-rx-next.js");
+const VueNextRx = require("../dist/vue-next-rx.js");
 const { Observable } = require("rxjs");
 const {
   startWith,
