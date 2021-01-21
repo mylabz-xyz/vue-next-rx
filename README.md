@@ -307,7 +307,7 @@ The above will automatically create two things on the instance:
 1. A `submitHandler` method which can be bound to in template with `v-on`;
 2. A `submitHandler$` observable which will be the stream emitting calls to `submitHandler`.
 
-[example](https://github.com/vuejs/vue-rx/blob/master/example/counter-function.html)
+[example](https://github.com/NOPR9D/vue-next-rx/blob/main/example/createObservableMethod.html)
 
 ---
 
