@@ -1,0 +1,42 @@
+<!-- this demo requires a browser that natively supports ES2015 -->
+
+<script src="https://unpkg.com/rxjs/bundles/rxjs.umd.js"></script>
+<script src="https://unpkg.com/vue@next"></script>
+<script src="../dist/vue-next-rx.js"></script>
+<div id="app">
+  <div>{{ count }}</div>
+
+  <!-- callback declared on observableMethods -->
+  <button v-on:click="muchMore(500)">Add 500</button>
+
+  <button v-on:click="minus(minusDelta1)">Minus on Click</button>
+
+  <pre>{{ $data }}</pre>
+</div>
+<script>
+  const { merge } = rxjs;
+  const { startWith, scan } = rxjs.operators;
+  const { ref, watch } = VueNextRx;
+
+  const app = Vue.createApp({
+    observableMethods: {
+      muchMore: "muchMore$",
+      minus: "minus$",
+    },
+    data() {
+      return {
+        minusDelta1: -1,
+        minusDelta2: -1,
+      };
+    },
+    subscriptions() {
+      return {
+        count: merge(this.muchMore$, this.minus$).pipe(
+          startWith(0),
+          scan((total, change) => total + change)
+        ),
+      };
+    },
+  }).use(VueNextRx);
+  app.mount("#app");
+</script>

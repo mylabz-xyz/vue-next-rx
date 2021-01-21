@@ -33,7 +33,7 @@ module.exports = [
       globals: {
         vue: "Vue",
         rxjs: "rxjs",
-        "rxjs/operators": "rxjs/  operators",
+        "rxjs/operators": "rxjs.operators",
       },
     },
     plugins: [

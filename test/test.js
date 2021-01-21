@@ -325,3 +325,90 @@ test("$subscribeTo()", () => {
   next(2);
   expect(results).toEqual([1]); // should not trigger anymore
 });
+
+test("$createObservableMethod() with no context", (done) => {
+  const { ob, next } = mock();
+  const results = [];
+  const component = {
+    template: defaultTemplate,
+    created() {
+      this.$createObservableMethod("add").subscribe(function (param) {
+        expect(param).toEqual("hola");
+        done();
+      });
+    },
+  };
+
+  const wrapper = mount(component);
+
+  wrapper.componentVM.$nextTick(() => {
+    wrapper.componentVM.add("hola");
+  });
+});
+
+test("$createObservableMethod() with multi params & context", (done) => {
+  const { ob, next } = mock();
+  const results = [];
+  var wrapper = { e: "" };
+  const component = {
+    template: defaultTemplate,
+    created() {
+      this.$createObservableMethod("add", true).subscribe(function (param) {
+        expect(param[0]).toEqual("hola");
+        expect(param[1]).toEqual("mundo");
+        expect(param[2]).toEqual(wrapper.componentVM);
+        done();
+      });
+    },
+  };
+
+  wrapper = mount(component);
+
+  wrapper.componentVM.$nextTick(() => {
+    wrapper.componentVM.add("hola", "mundo");
+  });
+});
+
+test("observableMethods mixin", (done) => {
+  const { ob, next } = mock();
+  const results = [];
+  const component = {
+    template: defaultTemplate,
+    observableMethods: ["add"],
+    created() {
+      this.add$.subscribe(function (param) {
+        expect(param[0]).toEqual("Qué");
+        expect(param[1]).toEqual("tal");
+        done();
+      });
+    },
+  };
+
+  const wrapper = mount(component);
+
+  wrapper.componentVM.$nextTick(() => {
+    wrapper.componentVM.add("Qué", "tal");
+  });
+});
+
+test("observableMethods mixin", (done) => {
+  const { ob, next } = mock();
+  const results = [];
+  const component = {
+    template: defaultTemplate,
+    observableMethods: { add: "plus$" },
+    created() {
+      this.plus$.subscribe(function (param) {
+        expect(param[0]).toEqual("Qué");
+        expect(param[1]).toEqual("tal");
+        done();
+      });
+    },
+  };
+
+  const wrapper = mount(component);
+
+  wrapper.componentVM.$nextTick(() => {
+    wrapper.componentVM.add("Qué", "tal");
+  });
+});
