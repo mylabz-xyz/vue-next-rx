@@ -53,8 +53,15 @@
   "keywords": [
     "vue",
     "vue 3",
+    "vue3",
     "vue next",
     "rx",
-    "rxjs"
+    "rxjs",
+    "composition-api",
+    "composition",
+    "pure",
+    "hooks",
+    "store",
+    "support"
   ]
 }
