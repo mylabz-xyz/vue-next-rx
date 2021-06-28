@@ -41,7 +41,7 @@ declare module "vue" {
       | ((this: Vue & { [key: string]: Observables | any }) => Observables);
     observableMethods?: string[] | Record<string, string>;
   }
-  interface ComponentCustomProps {
+  interface ComponentCustomProperties {
     $observables: Observables;
     $watchAsObservable(
       expr: string,
