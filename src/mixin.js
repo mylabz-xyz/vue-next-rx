@@ -1,29 +1,26 @@
 import { warn } from "./util";
 import { Subject, Subscription, isObservable } from "rxjs";
 
-
 export default {
   created() {
     const vm = this;
-    console.log(this)
     const domStreams = vm.$options.domStreams;
 
     if (domStreams) {
-      domStreams.forEach(key => {
+      domStreams.forEach((key) => {
         vm[key] = new Subject();
       });
     }
     const observableMethods = vm.$options.observableMethods;
     if (observableMethods) {
       if (Array.isArray(observableMethods)) {
-        observableMethods.forEach(methodName => {
+        observableMethods.forEach((methodName) => {
           vm[methodName + "$"] = vm.$createObservableMethod(methodName);
         });
       } else {
-        Object.keys(observableMethods).forEach(methodName => {
-          vm[observableMethods[methodName]] = vm.$createObservableMethod(
-            methodName
-          );
+        Object.keys(observableMethods).forEach((methodName) => {
+          vm[observableMethods[methodName]] =
+            vm.$createObservableMethod(methodName);
         });
       }
     }
@@ -35,7 +32,7 @@ export default {
     if (obs) {
       vm.$observables = {};
       vm._subscription = new Subscription();
-      Object.keys(obs).forEach(key => {
+      Object.keys(obs).forEach((key) => {
         vm[key] = undefined;
         const ob = (vm.$observables[key] = obs[key]);
         if (!isObservable(ob)) {
@@ -49,11 +46,11 @@ export default {
         }
         vm._subscription.add(
           obs[key].subscribe(
-            value => {
+            (value) => {
               vm[key] = value;
-              vm = {...vm}
+              vm = { ...vm };
             },
-            error => {
+            (error) => {
               throw error;
             }
           )
@@ -62,10 +59,9 @@ export default {
     }
   },
 
-
   beforeUnmount() {
     if (this._subscription) {
       this._subscription.unsubscribe();
     }
-  }
+  },
 };
