@@ -3,7 +3,7 @@ import { Subject, Subscription, isObservable } from "rxjs";
 
 export default {
   created() {
-    const vm = this;
+    var vm = this;
     const domStreams = vm.$options.domStreams;
 
     if (domStreams) {
@@ -11,6 +11,7 @@ export default {
         vm[key] = new Subject();
       });
     }
+
     const observableMethods = vm.$options.observableMethods;
     if (observableMethods) {
       if (Array.isArray(observableMethods)) {
@@ -47,8 +48,8 @@ export default {
         vm._subscription.add(
           obs[key].subscribe(
             (value) => {
-              vm[key] = value;
-              vm = { ...vm };
+              Object.assign(vm, { [key]: value });
+              this.$forceUpdate();
             },
             (error) => {
               throw error;
