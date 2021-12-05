@@ -45,7 +45,7 @@ To use in a browser environment, use the UMD build `dist/vue-next-rx.js`. When i
 Example:
 
 ```html
-<script src="https://unpkg.com/rxjs/bundles/rxjs.umd.js"></script>
+<script src="https://unpkg.com/rxjs@^7/dist/bundles/rxjs.umd.min.js"></script>
 <script src="https://unpkg.com/vue@next"></script>
 <script src="../dist/vue-next-rx.js"></script>
 ```
