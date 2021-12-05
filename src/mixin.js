@@ -11,7 +11,6 @@ export default {
         vm[key] = new Subject();
       });
     }
-
     const observableMethods = vm.$options.observableMethods;
     if (observableMethods) {
       if (Array.isArray(observableMethods)) {
