@@ -68,7 +68,7 @@ export default {
     const handle = binding.value;
     const _handle = el._rxHandles && el._rxHandles[getKey(binding)];
     if (_handle && handle && isObserver(handle.subject)) {
-      _handle.data = handle.data;
+      Object.assign(_handle, handle);
     }
   },
 
