@@ -4,7 +4,7 @@
 <img src="https://i.ibb.co/q5267TX/maxresdefault-2.jpg" width="25%" />
 </div>
 
-### [RxJS v6](https://github.com/ReactiveX/rxjs) integration for [Vue next]()
+### [RxJS v7](https://github.com/ReactiveX/rxjs) integration for [Vue next]()
 
 </br>
 
@@ -14,8 +14,13 @@
 <br>
 
 
-# Update 1.0.8
-Now using Rxjs v7
+# Update 1.0.9
+- Now using Rxjs v7
+- Fix undefined in case of created hook
+
+---
+<br/>
+---
 
 > **NOTE**
 >
@@ -328,6 +333,24 @@ See `/examples` for some simple examples.
 Test look goods, feel free to open an issue !
 
 ![](https://i.ibb.co/17mtk34/testsPNG.png)
+
+---
+
+### Contributors
+
+<div align="center" style="display:flex;" >
+<div  style="display:flex; flex-direction:row;align-items:center;width:50%;">
+<a href="https://github.com/NOPR9D">
+<img style="border-radius:100px; margin:auto;" src="https://avatars.githubusercontent.com/u/75882457?v=4" width="25%" />
+<div>NOPR9D</div></a>
+</div>
+<div style="display:flex; flex-direction:row;align-items:center; width:50%;" >
+<a href="https://github.com/AlvinTCH">
+<img style="border-radius:100px; margin:auto;" src="https://avatars.githubusercontent.com/u/48837852?v=4" width="25%" />
+<div>AlvinTCH</div>
+</a>
+</div>
+</div>
 
 ---
 
