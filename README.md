@@ -341,12 +341,12 @@ Test look goods, feel free to open an issue !
 <div align="center" style="display:flex;" >
 <div  style="display:flex; flex-direction:row;align-items:center;width:50%;">
 <a href="https://github.com/NOPR9D">
-<img style="border-radius:100px; margin:auto;" src="https://avatars.githubusercontent.com/u/75882457?v=4" width="25%" />
+<img style="border-radius:100px; margin:auto;" src="https://avatars.githubusercontent.com/u/75882457?v=4" width="75px" />
 <div>NOPR9D</div></a>
 </div>
 <div style="display:flex; flex-direction:row;align-items:center; width:50%;" >
 <a href="https://github.com/AlvinTCH">
-<img style="border-radius:100px; margin:auto;" src="https://avatars.githubusercontent.com/u/48837852?v=4" width="25%" />
+<img style="border-radius:100px; margin:auto;" src="https://avatars.githubusercontent.com/u/48837852?v=4" width="75px" />
 <div>AlvinTCH</div>
 </a>
 </div>
