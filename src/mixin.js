@@ -1,8 +1,7 @@
-import { warn } from "./util";
+import { uuidv4, warn } from "./util";
 import { Subject, Subscription, isObservable } from "rxjs";
 import { getCurrentInstance } from "vue";
 
-import { v4 as uuidv4 } from "uuid";
 export default {
   created() {
     var vm = this;
@@ -51,11 +50,11 @@ export default {
           obs[key].subscribe(
             (value) => {
               vm[key] = value;
-              const currentInst = getCurrentInstance();
-              const newKey = uuidv4();
               try {
                 vm.$forceUpdate();
               } catch (e) {
+                const currentInst = getCurrentInstance();
+                const newKey = uuidv4();
                 // try to force new key if force update fails (usually fails when it is created on created hook)
                 if (currentInst && currentInst.vnode) {
                   currentInst.vnode.key = newKey;
