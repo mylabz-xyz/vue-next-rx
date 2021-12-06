@@ -1,6 +1,6 @@
 {
   "name": "@nopr3d/vue-next-rx",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "RxJs for Vue 3",
   "author": "Boucham Amine",
   "license": "MIT",

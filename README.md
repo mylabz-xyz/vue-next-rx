@@ -14,7 +14,7 @@
 <br>
 
 
-# Update 1.0.9
+# Update 1.0.10
 - Now using Rxjs v7
 - Fix undefined in case of created hook
 
