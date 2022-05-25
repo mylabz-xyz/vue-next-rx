@@ -13,15 +13,6 @@
 
 <br>
 
-
-# Update 1.0.10
-- Now using Rxjs v7
-- Fix undefined in case of created hook
-
----
-<br/>
----
-
 > **NOTE**
 >
 > - vue-next-rx only works with RxJS v6+ by default. If you want to keep using RxJS v5 style code, install `rxjs-compat`.
