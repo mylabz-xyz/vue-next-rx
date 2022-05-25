@@ -40,9 +40,9 @@ npm install vue @nopr3d/vue-next-rx rxjs --save
 
 ```js
 import Vue from "vue";
-import VueRx from "@nopr3d/vue-next-rx";
+import VueNextRx from "@nopr3d/vue-next-rx";
 
-Vue.use(VueRx);
+Vue.use(VueNextRx);
 ```
 
 <br />
@@ -57,6 +57,24 @@ Example:
 <script src="https://unpkg.com/rxjs@^7/dist/bundles/rxjs.umd.min.js"></script>
 <script src="https://unpkg.com/vue@next"></script>
 <script src="../dist/vue-next-rx.js"></script>
+<div id="app">
+  <div class="home">
+    <button v-stream:click="click$">Click Me</button>
+  </div>
+</div>
+<script>
+  const { Subject, Observable, BehaviorSubject } = rxjs;
+  const { map, startWith, scan } = rxjs.operators;
+  const { ref, watch } = VueNextRx; // Use VueNextRx
+
+  const app = Vue.createApp({
+    domStreams: ["click$"],
+    subscriptions() {
+      this.click$.pipe(map(() => "Click Event")).subscribe(console.log); // On click will print "Click Event"
+    },
+  }).use(VueNextRx);
+  app.mount("#app");
+</script>
 ```
 
 <br />
@@ -238,7 +256,7 @@ export default defineComponent({
 
 ## `$subscribeTo(observable, next, error, complete)`
 
-This is a prototype method added to instances. You can use it to subscribe to an observable, but let VueRx manage the dispose/unsubscribe.
+This is a prototype method added to instances. You can use it to subscribe to an observable, but let VueNextRx manage the dispose/unsubscribe.
 
 ```js
 import { interval } from "rxjs";
